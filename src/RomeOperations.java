@@ -1,30 +1,36 @@
-public class RomeOperations {
-    private RomeNumbers list = new RomeNumbers();
+class RomeOperations {
+    private RomeNumbers operator = new RomeNumbers();
 
-    public String operateWithRome(String a, String b, String decimal) {
+    String operateWithRome(String a, String b, String decimal) throws Exception {
+
         int numberA = 0;
         int numberB = 0;
         String result = "";
-        for (int i = 0; i < list.getRomeList().length; i++) {
-            if (list.getRomeList()[i].equals(a)) {
-                numberA = i;
+
+        if (Integer.parseInt(a) < 11 && Integer.parseInt(b) < 11 ) {
+
+            for (int i = 0; i < operator.getRomeArray().length; i++) {
+                if (operator.getRomeArray()[i].equals(a)) {
+                    numberA = i;
+                }
+                if (operator.getRomeArray()[i].equals(b)) {
+                    numberB = i;
+                }
             }
-            if (list.getRomeList()[i].equals(b)) {
-                numberB = i;
-            }
-        }
+        } else throw new Exception("Input integers from range 1....10");
+
         switch (decimal) {
             case "+":
-                result = list.getRomeList()[(numberA + numberB)];
+                result = operator.getRomeArray()[(numberA + numberB)];
                 break;
             case "-":
-                result = list.getRomeList()[(numberA - numberB)];
+                result = operator.getRomeArray()[(numberA - numberB)];
                 break;
             case "*":
-                result = list.getRomeList()[(numberA * numberB)];
+                result = operator.getRomeArray()[(numberA * numberB)];
                 break;
             case "/":
-                result = list.getRomeList()[(numberA / numberB)];
+                result = operator.getRomeArray()[(numberA / numberB)];
                 break;
             default:
                 System.out.println("Wrong type of operations, choose one of [- + * /]");

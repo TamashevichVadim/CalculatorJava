@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        boolean loopmaker = true;
+        boolean loopMaker = true;
         boolean searcher;
         Scanner in = new Scanner(System.in);
         String phrase = "";
@@ -11,7 +11,7 @@ public class Main {
         RomeOperations romeOper = new RomeOperations();
         RomeNumbers romeNumbers = new RomeNumbers();
         try {
-            while (loopmaker) {
+            while (loopMaker) {
                 System.out.println("Input");
 
                 phrase = in.nextLine();
@@ -20,7 +20,7 @@ public class Main {
                 String decimal = stringsOfPhrase[1];
                 String stringB = stringsOfPhrase[2];
 
-                searcher = romeNumbers.getRolist().contains(stringA) && romeNumbers.getRolist().contains(stringB);
+                searcher = romeNumbers.getRomeList().contains(stringA) && romeNumbers.getRomeList().contains(stringB);
                 System.out.println("Output");
                 if (searcher) {
                     System.out.println(romeOper.operateWithRome(stringA, stringB, decimal));
@@ -29,11 +29,15 @@ public class Main {
                 }
             }
         } catch (NumberFormatException numberException) {
-            System.out.println("Please input numbers with one format (ARABIC or ROME) and UPPER CASE if your choice is ROME ");
+            System.out.println("Please input INTEGER numbers with one format (ARABIC or ROME) " +
+                    "and UPPER CASE if your choice is ROME ");
         } catch (ArrayIndexOutOfBoundsException arrayException) {
             System.out.println(" Please input with SPACE \" \" between members ");
         } catch (ArithmeticException mathException) {
             System.out.println("division by 0 is impossible");
+        } catch (Exception wrongInputRange) {
+           String mistake = wrongInputRange.toString();
+            System.out.println(mistake);
         }
     }
 }

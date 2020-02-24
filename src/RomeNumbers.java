@@ -15,11 +15,11 @@ class RomeNumbers {
             "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C" // 91 - 100
     };
 
-    public List<String> getRolist() { return Rolist; }
+    List<String> getRomeList() { return Rolist; }
 
     private List <String> Rolist = Arrays.asList(numbers);
 
-    String [] getRomeList() {
+    String [] getRomeArray() {
         return numbers;
     }
 }

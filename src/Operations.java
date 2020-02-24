@@ -1,12 +1,15 @@
 class Operations {
 
-    public String operateWithNormal(String a, String b, String decimal) {
-        int numberA = 0;
-        int numberB = 0;
+    String operateWithNormal(String a, String b, String decimal) throws Exception {
+
+        int numberA;
+        int numberB;
         String result = "";
 
-        numberA = Integer.parseInt(a);
-        numberB = Integer.parseInt(b);
+        if (Integer.parseInt(a) < 11 && Integer.parseInt(b) < 11 ) {
+            numberA = Integer.parseInt(a);
+            numberB = Integer.parseInt(b);
+        } else throw new Exception("Input integers from range 1....10");
 
         switch (decimal) {
             case "+":
