@@ -1,24 +1,28 @@
 class RomeOperations {
     private RomeNumbers operator = new RomeNumbers();
+    private int numberA = 0;
+    private int numberB = 0;
+    private String result = "";
 
-    String operateWithRome(String a, String b, String decimal) throws Exception {
+    int getNumberA() { return numberA; }
+    int getNumberB() { return numberB; }
 
-        int numberA = 0;
-        int numberB = 0;
-        String result = "";
+    void setNumberA(int numberA) { this.numberA = numberA; }
+    void setNumberB(int numberB) { this.numberB = numberB; }
 
-        if (Integer.parseInt(a) < 11 && Integer.parseInt(b) < 11 ) {
+    void findRome (String a, String b) {
 
-            for (int i = 0; i < operator.getRomeArray().length; i++) {
-                if (operator.getRomeArray()[i].equals(a)) {
-                    numberA = i;
-                }
-                if (operator.getRomeArray()[i].equals(b)) {
-                    numberB = i;
-                }
+        for (int i = 1; i < operator.getRomeArray().length - 90; i++) {
+            if (operator.getRomeArray()[i].equals(a)) {
+                numberA = i;
             }
-        } else throw new Exception("Input integers from range 1....10");
+            if (operator.getRomeArray()[i].equals(b)) {
+                numberB = i;
+            }
+        }
+    }
 
+    String operateWithRome (String decimal) {
         switch (decimal) {
             case "+":
                 result = operator.getRomeArray()[(numberA + numberB)];

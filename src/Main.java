@@ -22,8 +22,15 @@ public class Main {
 
                 searcher = romeNumbers.getRomeList().contains(stringA) && romeNumbers.getRomeList().contains(stringB);
                 System.out.println("Output");
+
                 if (searcher) {
-                    System.out.println(romeOper.operateWithRome(stringA, stringB, decimal));
+                    romeOper.findRome(stringA, stringB);
+                    if (romeOper.getNumberA() == 0 || romeOper.getNumberB() == 0) {
+                        throw new Exception();
+                    } else
+                        System.out.println(romeOper.operateWithRome(decimal));
+                    romeOper.setNumberA(0);
+                    romeOper.setNumberB(0);
                 } else {
                     System.out.println(oper.operateWithNormal(stringA, stringB, decimal));
                 }
@@ -35,9 +42,8 @@ public class Main {
             System.out.println(" Please input with SPACE \" \" between members ");
         } catch (ArithmeticException mathException) {
             System.out.println("division by 0 is impossible");
-        } catch (Exception wrongInputRange) {
-           String mistake = wrongInputRange.toString();
-            System.out.println(mistake);
+        } catch (Exception wrongRange) {
+            System.out.println("Input integers from range 1....10");
         }
     }
 }
